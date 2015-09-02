@@ -76,6 +76,51 @@
 //
 //            })
 //        }
+        if(typeof FileReader  == "undefined")
+        {
+            alert("您的浏览器老的不行了!");
+        }
+
+        function showDataByURL()
+        {
+            var resultFile = document.getElementById("fileDemo").files[0];
+            if(resultFile)
+            {
+                var urlData = this.result;
+                document.getElementById("result").innerHTML += "<img src='"+urlData+"' alt='"+resultFile.name+"'/>";
+            }
+        }
+
+        function showDataByBinaryString()
+        {
+            var resultFile = $("fileDemo").files[0];
+            if(resultFile)
+            {
+                var reader = new FileReader();
+                //异步方式，不会影响主线程
+                reader.readAsBinaryString(resultFile);
+
+                reader.onload = function(e) {
+                    var urlData = this.result;
+                    document.getElementById("result").innerHTML += urlData;
+                };
+            }
+        }
+
+        function showDataByText() {
+            var resultFile = document.getElementById("fileDemo").files[0];
+            if (resultFile) {
+                var reader = new FileReader();
+                reader.readAsText(resultFile,'gb2312');
+                reader.onload = function (e) {
+                    var urlData = this.result;
+                    document.getElementById("result").innerHTML += urlData;
+                    console.log(document.getElementById("result"));
+                    console.log($("#result"));
+//                    $("#result").innerHTML += urlData;
+                };
+            }
+        }
     </script>
 
 </head>
@@ -105,7 +150,14 @@
 <h2>AJAX</h2>
 <!--<button type="button" onclick="loadXMLDoc()">请求数据</button>-->
 <button>Click me</button>
+
 <div id="myDiv"></div>
 
+<input type="file" name="fileDemo" id="fileDemo" multiple/>
+<input type="button" value="readAsDataURL" id="readAsDataURL" onclick="showDataByURL();"/>
+<input type="button" value="readAsBinaryString"  id="readAsBinaryString" onclick="showDataByBinaryString();"/>
+<input type="button" value="readAsText"  id="readAsText" onclick="showDataByText();"/>
+<div id="result">         
+</div>
 </body>
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        function pageLoad()
+        {
+            var cnv = document.getElementById("cnvMain");
+            console.log(cnv);
+            var cxt = cnv.getContext("2d");
+            var gnt = cxt.createRadialGradient(40, 40, 5, 40,40, 90);
+            gnt.addColorStop(0, "#000");
+            gnt.addColorStop(0.3, "#eee");
+            gnt.addColorStop(1, "#fff");
+            cxt.beginPath();
+            cxt.arc(40, 40, 40, 0, Math.PI*2, true);
+            cxt.closePath();
+            cxt.fillStyle = gnt;
+            cxt.fill();
+
+            cxt.beginPath();
+            cxt.arc(40, 40, 40, 0, Math.PI*2, true);
+            cxt.closePath();
+            cxt.strokeStyle = "#666";
+            cxt.lineWidth = 2;
+            cxt.stroke();
+
+            cxt.beginPath();
+            cxt.arc(0, 40, 50, 0, Math.PI*2, true);
+            cxt.closePath();
+            cxt.strokeStyle = "#00ff00";
+            cxt.lineWidth = 2;
+            cxt.stroke();
+
+            cxt.beginPath();
+            cxt.arc(0, 40, 40, 0, Math.PI*2, true);
+            cxt.closePath();
+            cxt.strokeStyle = "#00ff00";
+            cxt.lineWidth = 2;
+            cxt.stroke();
+
+            cxt.beginPath();
+            cxt.arc(0, 40, 2, 0, Math.PI*2, true);
+            cxt.closePath();
+            cxt.fillStyle = "#00ffff";
+            cxt.fill();
+        }
+    </script>
+</head>
+<body onload="pageLoad();">
+    <canvas id="cnvMain" width="280px" height="190px"></canvas>
+</body>
+</html>

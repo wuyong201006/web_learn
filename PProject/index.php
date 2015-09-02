@@ -20,9 +20,9 @@
     echo "Hello Word!<br>";
 
     //server socket
-    $baseSocket = new BaseSocket('127.0.0.1', '8083');
-    $baseSocket->initSocket();
-    return;
+//    $baseSocket = new BaseSocket('127.0.0.1', '8083');
+//    $baseSocket->initSocket();
+//    return;
 
     //connect sql
 
