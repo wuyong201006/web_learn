@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        var strOrigin = "http://localhost:63342"
+        function PageLoadForMessage()
+        {
+            window.addEventListener('message',
+                    function(event)
+                    {
+                        console.log(event.origin);
+                        if(event.origin == strOrigin)
+                        {
+                            var strRetHTML = "<span><b>";
+                            strRetHTML += event.data+"</b>位随机数为:<b>";
+                            strRetHTML += RetRndNum(event.data);
+                            strRetHTML += "</b></span><br>";
+                            event.source.postMessage(strRetHTML, event.origin);
+                        }
+                    }, false);
+        }
+
+        function RetRndNum(n)
+        {
+            var strRnd = "";
+            for(var intI=0;intI<n;intI++)
+            {
+                strRnd += Math.floor(Math.random()*10);
+            }
+
+            return strRnd;
+        }
+    </script>
+</head>
+<body onLoad="PageLoadForMessage();">
+
+</body>
+</html>

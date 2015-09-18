@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        function $$(id)
+        {
+            return document.getElementById(id);
+        }
+
+//        var strOrigin = "localhost";
+        var strOrigin = "http://localhost:63342";
+        //自定义页面加载函数
+        function pageLoad()
+        {
+            window.addEventListener('message',
+            function(event)
+            {
+                console.log("收到："+event.origin);
+                if(event.origin == strOrigin)
+                {
+                    $$("pStatus").style.display = "block";
+                    $$("pStatus").innerHTML += event.data;
+                }
+            }, false)
+        }
+
+        function btnSend_Click()
+        {
+            var strTxtValue = $$("txtNum").value;
+            if(strTxtValue.length > 0)
+            {
+                var targetOrigin = strOrigin;
+                $$("ifrA").contentWindow.postMessage(strTxtValue, "*");
+            }
+        }
+
+    </script>
+</head>
+<body onload="pageLoad();">
+    <fieldset>
+        <legend>跨文档请求数据</legend>
+        <p id="pStatus"></p>
+        <input id="txtNum" type="text" class="inputtxt">
+        <input id="btnAdd" type="button" value="请求"
+                class="inputbtn" onclick="btnSend_Click();">
+        <iframe id="ifrA" src="Message.html"
+                width="0px" height="0px" frameborder="0"/>
+    </fieldset>
+    <img id="png" src="" draggable="true">
+</body>
+</html>

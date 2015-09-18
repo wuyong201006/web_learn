@@ -121,6 +121,33 @@
                 };
             }
         }
+
+        function createFunctions(){
+            var result = new Array();
+            for(var i=0;i<10;i++){
+                result[i] = function(){
+                    return i;
+                };
+            }
+
+            return result;
+        }
+
+        function createFunctions(){
+            var result = new Array();
+            for(var i=0;i<10;i++){
+              result[i] = function(num){
+                  return function(){
+                      return num;
+                  };
+              }(i);
+            }
+
+            return result;
+        }
+
+        console.log(createFunctions());
+//        alert("function:"+createFunctions());
     </script>
 
 </head>
@@ -149,15 +176,17 @@
 
 <h2>AJAX</h2>
 <!--<button type="button" onclick="loadXMLDoc()">请求数据</button>-->
-<button>Click me</button>
+<div>
+    <button>Click me</button>
+</div>
 
 <div id="myDiv"></div>
-
 <input type="file" name="fileDemo" id="fileDemo" multiple/>
 <input type="button" value="readAsDataURL" id="readAsDataURL" onclick="showDataByURL();"/>
 <input type="button" value="readAsBinaryString"  id="readAsBinaryString" onclick="showDataByBinaryString();"/>
 <input type="button" value="readAsText"  id="readAsText" onclick="showDataByText();"/>
-<div id="result">         
+<div id="result">
+
 </div>
 </body>
 </html>
