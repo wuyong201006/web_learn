@@ -12,6 +12,9 @@
     <!--</script>-->
 
     <!--//ajax-->
+    <style type="text/css">
+
+    </style>
     <script type="text/javascript" src="jquery-2.1.3.min.js"></script>
     <script type="text/javascript">
 
@@ -66,7 +69,10 @@
             $("button").click(function(){
                 favourites();
                 console.log("Click success!!!");
-            })
+            });
+
+
+
         })
 
 //        function myFunction()
@@ -180,13 +186,18 @@
     <button>Click me</button>
 </div>
 
-<div id="myDiv"></div>
-<input type="file" name="fileDemo" id="fileDemo" multiple/>
-<input type="button" value="readAsDataURL" id="readAsDataURL" onclick="showDataByURL();"/>
-<input type="button" value="readAsBinaryString"  id="readAsBinaryString" onclick="showDataByBinaryString();"/>
-<input type="button" value="readAsText"  id="readAsText" onclick="showDataByText();"/>
-<div id="result">
+<div id="myDiv">
 
+</div>
+
+<div>
+    <input type="file" name="fileDemo" id="fileDemo" multiple/>
+    <input type="button" value="readAsDataURL" id="readAsDataURL" onclick="showDataByURL();"/>
+    <input type="button" value="readAsBinaryString"  id="readAsBinaryString" onclick="showDataByBinaryString();"/>
+    <input type="button" value="readAsText"  id="readAsText" onclick="showDataByText();"/>
+</div>
+
+<div id="result">
 </div>
 </body>
 </html>
